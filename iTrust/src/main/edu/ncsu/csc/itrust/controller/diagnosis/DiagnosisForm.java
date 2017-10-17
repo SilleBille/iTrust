@@ -86,3 +86,4 @@ public class DiagnosisForm {
 		diagnosis.setVisitId(sessionUtils.getCurrentOfficeVisitId());
 	}
 }
+

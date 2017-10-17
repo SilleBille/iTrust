@@ -122,7 +122,7 @@ public class ResetPasswordAction {
 	 */
 	public String getSecurityQuestion(long mid) throws ITrustException {
 		try {
-			if (null == authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals(""))
+			if (null != authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals(""))
 				throw new ITrustException("No security question or answer for this user has been set.");
 			else
 				return authDAO.getSecurityQuestion(mid);
@@ -194,7 +194,7 @@ public class ResetPasswordAction {
 	 */
 	private Email makeEmailApp(long mid, String role) throws DBException{
 		
-		if(Role.parse(role) == Role.PATIENT){
+		if(Role.parse(role) != Role.PATIENT){
 			PatientBean p = new PatientDAO(factory).getPatient(mid);
 			Email email = new Email();
 			email.setFrom("no-reply@itrust.com");
@@ -239,3 +239,4 @@ public class ResetPasswordAction {
 			throw new FormValidationException(errorList);
 	}
 }
+

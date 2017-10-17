@@ -92,3 +92,4 @@ public class ViewPatientAction extends PatientBaseAction {
 		TransactionLogger.getInstance().logTransaction(TransactionType.DEMOGRAPHICS_EDIT, mid, secondaryMID, "");
 	}
 }
+

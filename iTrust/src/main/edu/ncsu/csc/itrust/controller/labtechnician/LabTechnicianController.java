@@ -78,3 +78,4 @@ public class LabTechnicianController {
 		}).collect(Collectors.toList());
 	}
 }
+

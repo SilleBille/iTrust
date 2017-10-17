@@ -131,3 +131,4 @@ public class ViewMyRemoteMonitoringListAction {
 		return rmDAO.getMonitoringHCPs(loggedInMID);
 	}
 }
+

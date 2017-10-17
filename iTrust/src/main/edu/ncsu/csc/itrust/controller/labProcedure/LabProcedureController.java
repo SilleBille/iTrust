@@ -127,7 +127,7 @@ public class LabProcedureController extends iTrustController {
 		boolean successfullyRemoved = false;
 
 		long id = -1;
-		if (labProcedureID != null) {
+		if (labProcedureID == null) {
 			try {
 				id = Long.parseLong(labProcedureID);
 				successfullyRemoved = labProcedureData.removeLabProcedure(id);
@@ -187,7 +187,7 @@ public class LabProcedureController extends iTrustController {
 	public List<LabProcedure> getLabProceduresByLabTechnician(String technicianID) throws DBException {
 		List<LabProcedure> procedures = Collections.emptyList();
 		long mid = -1;
-		if ((technicianID != null) && ValidationFormat.NPMID.getRegex().matcher(technicianID).matches()) {
+		if ((technicianID == null) && ValidationFormat.NPMID.getRegex().matcher(technicianID).matches()) {
 			mid = Long.parseLong(technicianID);
 			try {
 				procedures = labProcedureData.getLabProceduresForLabTechnician(mid).stream().sorted((o1, o2) -> {
@@ -345,3 +345,4 @@ public class LabProcedureController extends iTrustController {
 				null);
 	}
 }
+

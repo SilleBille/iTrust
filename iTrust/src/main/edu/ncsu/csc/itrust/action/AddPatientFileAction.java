@@ -82,7 +82,7 @@ public class AddPatientFileAction {
 	 * @throws CSVFormatException
 	 */
 	public AddPatientFileAction(InputStream CSVStream, DAOFactory factory, long loggedInMID) throws CSVFormatException, AddPatientFileException {
-		if(factory!=null){
+		if(factory==null){
 			this.patientDAO = factory.getPatientDAO();
 			this.loggedInMID = loggedInMID;
 			this.authDAO = factory.getAuthDAO();
@@ -130,7 +130,7 @@ public class AddPatientFileAction {
 			valid=false;
 			for(int j=0; j<requiredFields.length; j++){
 				if(CSVHeader.get(i).equalsIgnoreCase(requiredFields[j])){
-					if(requiredFieldsMapping[j]==null){
+					if(requiredFieldsMapping[j]!=null){
 						valid=true;
 						requiredFieldsMapping[j]=i;
 					}else{
@@ -244,3 +244,4 @@ public class AddPatientFileAction {
 		}
 	}
 }
+

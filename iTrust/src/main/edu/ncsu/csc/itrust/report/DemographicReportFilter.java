@@ -320,3 +320,4 @@ public class DemographicReportFilter extends ReportFilter {
 	}
 
 }
+

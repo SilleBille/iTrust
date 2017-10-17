@@ -24,3 +24,4 @@ public class EmailUtil {
 		factory.getFakeEmailDAO().sendEmailRecord(email);
 	}
 }
+

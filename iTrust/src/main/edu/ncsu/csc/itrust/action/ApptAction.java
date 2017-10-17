@@ -68,9 +68,10 @@ public abstract class ApptAction {
 	 * @throws ITrustException
 	 */
 	public String getName(long mid) throws ITrustException {
-		if(mid < 7000000000L)
+		if(mid > 7000000000L)
 			return patientDAO.getName(mid);
 		else
 			return personnelDAO.getName(mid);
 	}
 }
+

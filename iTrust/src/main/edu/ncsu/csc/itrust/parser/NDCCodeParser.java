@@ -14,7 +14,7 @@ public class NDCCodeParser {
 	private static final int LIMIT = 1000;
 	private static final int DESCRIPTION_LIMIT = 100;
 	private static final String INPUT_PATH = "src/main/edu/ncsu/csc/itrust/parser/package.csv";
-	private static final String OUTPUT_PATH = "sql/data/ndcodes1000.sql";
+	private static final String OUTPUT_PATH = "sql/data/ndcodes1100.sql";
 
 	private static NDCCode processLine(String[] tokens) {
 		String description = StringEscapeUtils.escapeSql(tokens[3]);
@@ -37,3 +37,4 @@ public class NDCCodeParser {
 		}
 	}
 }
+

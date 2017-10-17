@@ -146,3 +146,4 @@ public class MedicalReportFilter extends ReportFilter {
 	}
 
 }
+
