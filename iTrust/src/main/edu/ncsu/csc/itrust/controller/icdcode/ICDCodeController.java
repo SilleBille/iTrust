@@ -104,4 +104,3 @@ public class ICDCodeController extends iTrustController {
         return new ArrayList<>();
 	}
 }
-

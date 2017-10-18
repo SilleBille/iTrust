@@ -23,4 +23,3 @@ public abstract class ReportFilter {
 	public abstract String getFilterTypeString();
 	public abstract String getFilterValue();
 }
-

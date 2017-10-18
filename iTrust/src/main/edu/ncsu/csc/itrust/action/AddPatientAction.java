@@ -74,4 +74,3 @@ public class AddPatientAction {
 		return newMID;
 	}
 }
-

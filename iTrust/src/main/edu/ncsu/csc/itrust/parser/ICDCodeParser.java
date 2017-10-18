@@ -11,7 +11,7 @@ import edu.ncsu.csc.itrust.model.icdcode.ICDCode;
 public class ICDCodeParser {
 	private static final int LIMIT = 1000;
 	private static final int NAME_LENGTH = 30;
-	private static final String INPUT_PATH = "src/main/edu/ncsu/csc/itrust/parser/cci_icd11cm_2017.csv";
+	private static final String INPUT_PATH = "src/main/edu/ncsu/csc/itrust/parser/cci_icd10cm_2017.csv";
 	private static final String OUTPUT_PATH = "sql/data/icdcode.sql";
 
 	private static ICDCode processLine(String[] tokens) {
@@ -34,4 +34,3 @@ public class ICDCodeParser {
 		}
 	}
 }
-

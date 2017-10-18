@@ -40,8 +40,8 @@ public class ChangePasswordAction {
 	 */
 	public String changePassword(long mid, String oldPass, String newPass, String confirmPass) throws FormValidationException, DBException,
 	ITrustException {
-		String containsLetter = "[a-zA-Z1-9]*[a-zA-Z]+[a-zA-Z0-9]*";
-		String containsNumber = "[a-zA-Z1-9]*[0-9]+[a-zA-Z0-9]*";
+		String containsLetter = "[a-zA-Z0-9]*[a-zA-Z]+[a-zA-Z0-9]*";
+		String containsNumber = "[a-zA-Z0-9]*[0-9]+[a-zA-Z0-9]*";
 		String fiveAlphanumeric = "[a-zA-Z0-9]{5,20}";
 		
 		//Make sure old password is valid
@@ -88,4 +88,3 @@ public class ChangePasswordAction {
 	
 	//generate a new salt for each time a user account is made 
 }
-

@@ -79,4 +79,3 @@ public class PatientBaseAction {
 		return pid;
 	}
 }
-

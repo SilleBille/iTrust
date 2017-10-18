@@ -77,4 +77,3 @@ public class ReviewsAction {
 	return dao.getTotalAverageRating(pid);
   }
 }
-

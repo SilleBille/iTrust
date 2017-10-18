@@ -65,4 +65,3 @@ public class ViewReportAction {
 		return patientDAO.getPatient(mid);
 	}
 }
-

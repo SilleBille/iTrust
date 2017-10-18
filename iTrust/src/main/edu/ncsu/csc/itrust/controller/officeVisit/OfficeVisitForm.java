@@ -409,4 +409,3 @@ public class OfficeVisitForm {
 		return (visitID != null) && (visitID > 0);
 	}
 }
-

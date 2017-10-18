@@ -13,4 +13,3 @@ public interface DeleteEntryAction {
 	 */
 	public int deleteEntry(long entryID) throws ITrustException;
 }
-

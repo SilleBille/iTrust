@@ -37,4 +37,3 @@ public class Localization {
 		return currentInstance;
 	}
 }
-

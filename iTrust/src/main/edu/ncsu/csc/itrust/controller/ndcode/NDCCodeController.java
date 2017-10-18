@@ -116,4 +116,3 @@ public class NDCCodeController extends iTrustController {
         return new ArrayList<>();
 	}
 }
-

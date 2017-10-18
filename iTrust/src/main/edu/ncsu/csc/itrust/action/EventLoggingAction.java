@@ -38,4 +38,3 @@ public class EventLoggingAction {
 		this.transDAO.logTransaction(type, loggedInMID, secondaryMID, addedInfo);
 	}
 }
-

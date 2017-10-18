@@ -52,4 +52,3 @@ public class ChangeSessionTimeoutAction {
 		return accessDAO.getSessionTimeoutMins();
 	}
 }
-

@@ -56,4 +56,3 @@ public class AddHCPAction {
 		return newMID;
 	}
 }
-

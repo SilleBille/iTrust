@@ -37,4 +37,3 @@ public class ITrustException extends Exception {
 		return "No extended information.";
 	}
 }
-

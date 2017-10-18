@@ -32,4 +32,3 @@ public class PatientRoomAssignmentAction {
 		wardDAO.updateWardRoomOccupant(wardRoom);
 	}
 }
-

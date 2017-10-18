@@ -102,4 +102,3 @@ public class ImmunizationForm {
         immunization = new Immunization(0, sessionUtils.getCurrentOfficeVisitId(), new CPTCode());
     }
 }
-

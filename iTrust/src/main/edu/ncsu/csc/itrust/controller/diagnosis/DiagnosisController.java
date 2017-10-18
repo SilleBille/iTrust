@@ -110,4 +110,3 @@ public class DiagnosisController extends iTrustController {
 		return result;
 	}
 }
-

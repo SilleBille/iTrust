@@ -29,10 +29,9 @@ public class DBException extends ITrustException {
 
 	@Override
 	public String getExtendedMessage() {
-		if (sqlException == null)
+		if (sqlException != null)
 			return sqlException.getMessage();
 		else
 			return super.getExtendedMessage();
 	}
 }
-

@@ -259,4 +259,3 @@ public class GroupReportAction {
 		return pDAO.getAllPatients();
 	}
 }
-

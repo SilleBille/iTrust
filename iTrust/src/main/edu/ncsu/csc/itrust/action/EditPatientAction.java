@@ -158,4 +158,3 @@ public class EditPatientAction extends PatientBaseAction {
 		return true;
 	}
 }
-

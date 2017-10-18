@@ -108,4 +108,3 @@ public class PatientNavigation implements Tag {
 		this.thisTitle = thisPage;
 	}
 }
-

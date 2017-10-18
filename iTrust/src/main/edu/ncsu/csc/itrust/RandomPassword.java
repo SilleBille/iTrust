@@ -24,4 +24,3 @@ public class RandomPassword {
 		return buf.toString();
 	}
 }
-

@@ -97,4 +97,3 @@ public class MedicalProcedureForm {
         medicalProcedure.setOfficeVisitId(sessionUtils.getCurrentOfficeVisitId());
     }
 }
-

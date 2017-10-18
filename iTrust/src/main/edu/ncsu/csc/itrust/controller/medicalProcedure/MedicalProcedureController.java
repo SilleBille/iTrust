@@ -112,4 +112,3 @@ public class MedicalProcedureController extends iTrustController {
         sql = newsql;
     }
 }
-

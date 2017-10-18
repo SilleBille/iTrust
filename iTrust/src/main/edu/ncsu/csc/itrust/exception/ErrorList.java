@@ -55,4 +55,3 @@ public class ErrorList implements Iterable<String> {
 		return errorList.iterator();
 	}
 }
-
