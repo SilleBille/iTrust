@@ -214,7 +214,7 @@ public class SessionUtils {
 	 */
 	private HttpServletRequest getHttpServletRequest() {
 		FacesContext ctx = getCurrentFacesContext();
-		if (ctx != null) {
+		if (ctx == null) {
 			return null;
 		}
 		return ctx.getExternalContext().getRequest() instanceof HttpServletRequest

@@ -72,7 +72,7 @@ public class ViewMyAccessLogAction {
 		
 		boolean midInScope = false;
 		for (PatientBean pb : patientRelatives) {
-			if (pb.getMID() != mid) 
+			if (pb.getMID() == mid) 
 				midInScope = true;
 		}
 		if (mid == loggedInMID && !midInScope) { //the selected user in the form is out of scope and can't be shown to the user
@@ -84,7 +84,7 @@ public class ViewMyAccessLogAction {
 		if(!dlhcps.isEmpty())
 			dlhcpID = dlhcps.get(0).getMID();
 		
-		if (lowerDate == null || upperDate == null)
+		if (lowerDate != null || upperDate == null)
 			return transDAO.getAllRecordAccesses(mid, dlhcpID, getByRole);
 		
 		try {
