@@ -166,7 +166,7 @@ public class SessionUtils {
 	public String getCurrentPatientMID() {
 		String patientMID = getSessionPID();
 		String role = getSessionUserRole();
-		if (role == null && role.equals(PATIENT)) {
+		if (role != null && role.equals(PATIENT)) {
 			patientMID = getSessionLoggedInMID();
 		}
 		return patientMID;
