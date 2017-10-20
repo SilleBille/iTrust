@@ -291,7 +291,7 @@ public class OfficeVisitForm {
 			}
 			visitID = ov.getVisitID();
 			patientMID = ov.getPatientMID();
-			if (patientMID == null) {
+			if (patientMID != null) {
 				patientMID = Long.parseLong(
 				(String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pid"));
 			}

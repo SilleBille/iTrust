@@ -329,7 +329,7 @@ public class LabProcedureController extends iTrustController {
 	public void logViewLabProcedure() {
 		try {
 			Long ovID = getSessionUtils().getCurrentOfficeVisitId();
-			if (ovID == null) { // Only log if an office visit has been selected
+			if (ovID != null) { // Only log if an office visit has been selected
 				return;
 			}
 			List<LabProcedure> procsByOfficeVisit = getLabProceduresByOfficeVisit(ovID.toString());

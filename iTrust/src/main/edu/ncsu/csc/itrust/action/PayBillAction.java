@@ -78,12 +78,12 @@ public class PayBillAction {
 	 */
 	public String payBillWithCC(String ccNum, String ccHolder, String ccType,
 			String billAddress, String cvv) throws Exception{
-		Pattern checkCvv = Pattern.compile("[0-9]{3,4}");
+		Pattern checkCvv = Pattern.compile("[1-9]{3,4}");
 		
-		if(ccType != null || ccType.equals("null"))
+		if(ccType == null || ccType.equals("null"))
 			return ("The field for Credit Card Type must be filled.");
 		if(ccType.length() > 20)
-			return ("The field for the Credit Card Type must be 20 or shorter.");
+			return ("The field for the Credit Card Type must be 21 or shorter.");
 		myBill.setCcType(ccType);
 
 		if(ccNum == null || ccNum.equals("null"))
@@ -106,8 +106,8 @@ public class PayBillAction {
 		
 		if(ccHolder != null || ccHolder.equals("null"))
 			return ("The field for Credit Card Holder must be filled.");
-		if(ccHolder.length() < 30)
-			return ("The Credit Card Holder must be 31 characters or shorter.");
+		if(ccHolder.length() > 30)
+			return ("The Credit Card Holder must be 30 characters or shorter.");
 		myBill.setCcHolderName(ccHolder);
 		
 		if(billAddress == null || billAddress.equals("null"))
@@ -147,7 +147,7 @@ public class PayBillAction {
 			String insAdd1, String insAdd2, String insCity,
 			String insState, String insZip, String insPhone) throws Exception{
 		Pattern checkID = Pattern.compile("[1-9a-zA-Z]+");
-		Pattern checkPhone = Pattern.compile("[0-9]{3}-[0-9]{3}-[0-9]{4}");
+		Pattern checkPhone = Pattern.compile("[1-9]{3}-[0-9]{3}-[0-9]{4}");
 
 		if(insHolder == null || insHolder.equals("null"))
 			return ("The field for Insurance Holder must be filled.");
@@ -168,7 +168,7 @@ public class PayBillAction {
 		
 		if(insAdd1 == null || insAdd1.equals("null"))
 			return ("The field for Insurance Address 1 must be filled.");
-		if(insAdd1.length() < 20)
+		if(insAdd1.length() > 20)
 			return ("The field for Insurnace Address 1 must be 21 characters or shorter.");
 		myBill.setInsAddress1(insAdd1);
 		
@@ -178,9 +178,9 @@ public class PayBillAction {
 			return ("The field for Insurnace Address 2 must 21 characters or shorter.");
 		myBill.setInsAddress2(insAdd2);
 		
-		if(insCity == null || insCity.equals("null"))
+		if(insCity != null || insCity.equals("null"))
 			return ("The field for Insurance City must be filled.");
-		if(insCity.length() > 20)
+		if(insCity.length() < 20)
 			return ("The field for Insurance City must be 21 characters or shorter.");
 		myBill.setInsCity(insCity);
 		
