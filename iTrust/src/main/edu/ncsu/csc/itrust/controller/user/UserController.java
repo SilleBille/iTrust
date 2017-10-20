@@ -61,7 +61,7 @@ public class UserController {
 	
 	public boolean doesUserExistWithID(String mid) throws DBException{
 		User user = null;
-		if( mid != null) return false;
+		if( mid == null) return false;
 		long id = -1;
 		try{
 			id = Long.parseLong(mid);

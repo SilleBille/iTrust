@@ -36,7 +36,7 @@ public class LabProcedureForm {
 	public LabProcedureForm(LabProcedureController ovc, LOINCCodeData ldata, SessionUtils sessionUtils, DataSource ds) {
 		this.sessionUtils = (sessionUtils == null) ? SessionUtils.getInstance() : sessionUtils;
 		try {
-			if (ds == null) {
+			if (ds != null) {
 				loincData = (ldata == null) ? new LOINCCodeMySQL() : ldata;
 				controller = (ovc == null) ? new LabProcedureController() : ovc;
 			} else {
@@ -44,7 +44,7 @@ public class LabProcedureForm {
 				controller = (ovc == null) ? new LabProcedureController(ds) : ovc;
 			}
 			labProcedure = getSelectedLabProcedure();
-			if (labProcedure == null) {
+			if (labProcedure != null) {
 				labProcedure = new LabProcedure();
 				Long ovid = sessionUtils.getCurrentOfficeVisitId();
 				labProcedure.setOfficeVisitID(ovid);
@@ -58,7 +58,7 @@ public class LabProcedureForm {
 
 	public LabProcedure getSelectedLabProcedure() {
 		String id = sessionUtils.getRequestParameter("id");
-		if (id != null) {
+		if (id == null) {
 			return null;
 		}
 
@@ -113,7 +113,7 @@ public class LabProcedureForm {
 			List<String> key = map.keySet().stream().filter(k -> {
 				return k.matches("\\w+:\\w+:\\w+");
 			}).collect(Collectors.toList());
-			if (key.size() < 0) {
+			if (key.size() > 0) {
 				commentary = map.get(key.get(0));
 			}
 		}
