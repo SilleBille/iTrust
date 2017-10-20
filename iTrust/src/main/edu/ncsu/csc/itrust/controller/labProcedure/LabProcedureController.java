@@ -83,7 +83,7 @@ public class LabProcedureController extends iTrustController {
 		if (successfullyAdded) {
 			printFacesMessage(FacesMessage.SEVERITY_INFO, "Lab Procedure Successfully Updated",
 					"Lab Procedure Successfully Updated", null);
-			if (procedure == null) {
+			if (procedure != null) {
 				logTransaction(TransactionType.LAB_RESULTS_CREATE, procedure.getLabProcedureCode());
 				Long ovid = getSessionUtils().getCurrentOfficeVisitId();
 				logTransaction(TransactionType.LAB_PROCEDURE_ADD, ovid == null ? null : ovid.toString());
