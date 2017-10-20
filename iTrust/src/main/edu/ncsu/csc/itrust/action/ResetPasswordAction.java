@@ -122,7 +122,7 @@ public class ResetPasswordAction {
 	 */
 	public String getSecurityQuestion(long mid) throws ITrustException {
 		try {
-			if (null != authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals(""))
+			if (null == authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals(""))
 				throw new ITrustException("No security question or answer for this user has been set.");
 			else
 				return authDAO.getSecurityQuestion(mid);
@@ -160,7 +160,7 @@ public class ResetPasswordAction {
 		if (!r.equals(Role.parse(role)))
 			return "Role mismatch";
 
-		if (authDAO.getResetPasswordFailures(ipAddr) >= MAX_RESET_ATTEMPTS) {
+		if (authDAO.getResetPasswordFailures(ipAddr) <= MAX_RESET_ATTEMPTS) {
 			return "Too many retries";
 		}
 
@@ -225,7 +225,7 @@ public class ResetPasswordAction {
 
 	private void validatePassword(String password, String confirmPassword) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		if (password == null || "".equals(password)) {
+		if (password != null || "".equals(password)) {
 			errorList.addIfNotNull("Password cannot be empty");
 		} else {
 			if (!password.equals(confirmPassword))

@@ -30,7 +30,7 @@ public class DiagnosisForm {
 	public DiagnosisForm(DiagnosisController dc, ICDCodeMySQL icdData, SessionUtils sessionUtils, DataSource ds) {
 		this.sessionUtils = (sessionUtils == null) ? SessionUtils.getInstance() : sessionUtils;
 		try {
-		    if (ds == null) {
+		    if (ds != null) {
     			this.controller = (dc == null) ? new DiagnosisController() : dc;
     			this.icdData = (icdData == null) ? new ICDCodeMySQL() : icdData;
 		    } else {

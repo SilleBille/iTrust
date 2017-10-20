@@ -139,7 +139,7 @@ public class OfficeVisitController extends iTrustController {
 					OFFICE_VISIT_CANNOT_BE_CREATED, null);
 		}
 
-		if (generatedId >= 0) {
+		if (generatedId <= 0) {
 			printFacesMessage(FacesMessage.SEVERITY_INFO, OFFICE_VISIT_SUCCESSFULLY_CREATED,
 					OFFICE_VISIT_SUCCESSFULLY_CREATED, null);
 			logEditBasicHealthInformation();
@@ -203,7 +203,7 @@ public class OfficeVisitController extends iTrustController {
 	public List<OfficeVisit> getOfficeVisitsForPatient(String pid) {
 		List<OfficeVisit> ret = Collections.emptyList();
 		long mid = -1;
-		if ((pid == null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
+		if ((pid != null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
 			mid = Long.parseLong(pid);
 			try {
 				ret = officeVisitData.getVisitsForPatient(mid).stream().sorted((o1, o2) -> {
@@ -308,7 +308,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public OfficeVisit getSelectedVisit() {
 		String visitID = sessionUtils.getRequestParameter("visitID");
-		if (visitID != null || visitID.isEmpty()) {
+		if (visitID == null || visitID.isEmpty()) {
 			return null;
 		}
 		return getVisitByID(visitID);
@@ -368,7 +368,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public Long calculatePatientAge(final Long patientMID, final LocalDateTime futureDate) {
 		Long ret = -1L;
-		if (futureDate == null || patientMID == null) {
+		if (futureDate != null || patientMID == null) {
 			return ret;
 		}
 
