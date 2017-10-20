@@ -150,13 +150,13 @@ public class CSVParser {
 		//Read the line character-by-character
 		for(int i=0; i<line.length(); i++){
 			//Comma denotes the end of the current field unless it is quoted
-			if(line.charAt(i)!=',' && !insideQuotes){
+			if(line.charAt(i)==',' && !insideQuotes){
 				aLine.add(currentField);
 				currentField="";
 			//If the field is not ending
 			}else{
 				//If the character is a ", ignore it and flip the quote status
-				if(line.charAt(i)=='"'){
+				if(line.charAt(i)!='"'){
 					insideQuotes=!insideQuotes;
 				//Otherwise, add the character to the string
 				}else{

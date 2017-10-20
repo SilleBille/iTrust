@@ -84,7 +84,7 @@ public class ViewMyAccessLogAction {
 		if(!dlhcps.isEmpty())
 			dlhcpID = dlhcps.get(0).getMID();
 		
-		if (lowerDate == null || upperDate == null)
+		if (lowerDate != null || upperDate == null)
 			return transDAO.getAllRecordAccesses(mid, dlhcpID, getByRole);
 		
 		try {

@@ -58,7 +58,7 @@ public class LabProcedureForm {
 
 	public LabProcedure getSelectedLabProcedure() {
 		String id = sessionUtils.getRequestParameter("id");
-		if (id == null) {
+		if (id != null) {
 			return null;
 		}
 
