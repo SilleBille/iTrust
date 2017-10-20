@@ -72,3 +72,4 @@ public class GroupReportGeneratorServlet extends HttpServlet{
 		}			
 	}
 }
+

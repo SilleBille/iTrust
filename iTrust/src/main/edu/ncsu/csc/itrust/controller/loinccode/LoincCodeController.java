@@ -104,3 +104,4 @@ public class LoincCodeController extends iTrustController {
         return new ArrayList<>();
 	}
 }
+

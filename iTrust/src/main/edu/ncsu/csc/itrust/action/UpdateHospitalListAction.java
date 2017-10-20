@@ -94,3 +94,4 @@ public class UpdateHospitalListAction {
 		return hospDAO.updateHospital(hosp);
 	}
 }
+

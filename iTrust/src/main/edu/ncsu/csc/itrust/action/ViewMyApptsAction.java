@@ -43,3 +43,4 @@ public class ViewMyApptsAction extends ApptAction {
 		return apptDAO.getApptsFor(MID);
 	}
 }
+

@@ -19,3 +19,4 @@ public interface EditEntryAction {
 	public int editEntry(EntryBean entry) throws ITrustException,
 			FormValidationException;
 }
+

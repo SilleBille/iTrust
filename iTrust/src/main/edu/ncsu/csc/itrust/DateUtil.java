@@ -27,7 +27,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * Checks to see if a given date is within a range of months <strong>INCLUSIVELY</strong>, agnostic of
+	 * Checks to see if a given date is within a range of months <strong<INCLUSIVELY</strong>, agnostic of
 	 * the year. <br />
 	 * <br />
 	 * 
@@ -135,3 +135,4 @@ public class DateUtil {
 		month2.setTime(cal.getTimeInMillis());
 	}
 }
+

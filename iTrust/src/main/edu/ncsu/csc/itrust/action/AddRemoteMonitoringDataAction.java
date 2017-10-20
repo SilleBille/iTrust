@@ -75,3 +75,4 @@ public class AddRemoteMonitoringDataAction {
 		return authDAO.getUserName(pid);
 	}
 }
+

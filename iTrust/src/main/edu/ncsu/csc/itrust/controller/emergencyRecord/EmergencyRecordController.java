@@ -74,3 +74,4 @@ public class EmergencyRecordController extends iTrustController {
 		}
 	}
 }
+

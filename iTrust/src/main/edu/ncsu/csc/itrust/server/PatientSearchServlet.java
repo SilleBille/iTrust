@@ -96,3 +96,4 @@ public class PatientSearchServlet extends HttpServlet {
 	}
 
 }
+

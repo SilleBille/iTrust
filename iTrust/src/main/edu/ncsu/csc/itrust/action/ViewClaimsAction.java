@@ -67,3 +67,4 @@ public class ViewClaimsAction {
 		return new SimpleDateFormat("MM/dd/YYYY").format(b.getSubTime());
 	}
 }
+

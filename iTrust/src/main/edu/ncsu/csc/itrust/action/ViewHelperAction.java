@@ -29,3 +29,4 @@ public class ViewHelperAction {
 		return String.format("%06X", (newRed << 16) + (newGreen << 8) + newBlue);
 	}
 }
+

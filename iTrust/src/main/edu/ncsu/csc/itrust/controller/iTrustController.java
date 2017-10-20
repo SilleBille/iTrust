@@ -85,3 +85,4 @@ public class iTrustController {
 		logTransaction(type, loggedInMID, patientMID, addedInfo);
 	}
 }
+

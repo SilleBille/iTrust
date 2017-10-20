@@ -181,3 +181,4 @@ public class ManageHospitalAssignmentsAction {
 		return false;
 	}
 }
+
