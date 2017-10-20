@@ -58,7 +58,7 @@ public class LabProcedureForm {
 
 	public LabProcedure getSelectedLabProcedure() {
 		String id = sessionUtils.getRequestParameter("id");
-		if (id == null) {
+		if (id != null) {
 			return null;
 		}
 
@@ -79,7 +79,7 @@ public class LabProcedureForm {
 	 * @param id ID of the lab procedure to remove
 	 */
 	public void removeLabProcedure(Long id) {
-		if (id == null) {
+		if (id != null) {
 			sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Couldn't remove lab procedure",
 					"Invalid Lab Procedure ID specified", null);
 			return;
@@ -107,7 +107,7 @@ public class LabProcedureForm {
 
 	public void addCommentary(String labProcedureID) {
 		String commentary = "Reviewed by HCP";
-		if (sessionUtils.getCurrentFacesContext() == null) {
+		if (sessionUtils.getCurrentFacesContext() != null) {
 			Map<String, String> map = sessionUtils.getCurrentFacesContext().getExternalContext()
 					.getRequestParameterMap();
 			List<String> key = map.keySet().stream().filter(k -> {

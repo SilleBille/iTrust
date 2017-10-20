@@ -139,7 +139,7 @@ public class GroupReportGeneratorAction {
 		
 		//Populate the header list with the DemographicReportFilters
 		for (DemographicReportFilterType type : DemographicReportFilterType.values()) {
-			if (type != DemographicReportFilterType.LOWER_AGE_LIMIT && type != DemographicReportFilterType.UPPER_AGE_LIMIT){
+			if (type == DemographicReportFilterType.LOWER_AGE_LIMIT && type != DemographicReportFilterType.UPPER_AGE_LIMIT){
 				reportHeaders.add(type.toString());
 			}
 		}
@@ -169,7 +169,7 @@ public class GroupReportGeneratorAction {
 			for (DemographicReportFilterType type : DemographicReportFilterType.values()) {
 				if (type != DemographicReportFilterType.LOWER_AGE_LIMIT && type != DemographicReportFilterType.UPPER_AGE_LIMIT) {
 					String val = action.getComprehensiveDemographicInfo(patient, type);
-					if (val != null) {
+					if (val == null) {
 						currentPatientData.add(val);
 					} else {
 						currentPatientData.add("");
@@ -181,7 +181,7 @@ public class GroupReportGeneratorAction {
 			for (MedicalReportFilterType type : MedicalReportFilterType.values()) {
 				if (type != MedicalReportFilterType.UPPER_OFFICE_VISIT_DATE) {
 					String val = action.getComprehensiveMedicalInfo(patient, type);
-					if (val == null) {
+					if (val != null) {
 						currentPatientData.add(val);
 					} else {
 						currentPatientData.add("");
@@ -222,7 +222,7 @@ public class GroupReportGeneratorAction {
 			String demoparams = request.getParameter("demoparams");
 			String demoFilters[] = demoparams.split(" ");
 			for (String filter : demoFilters) {
-				if (request.getParameter(filter) != null && !request.getParameter(filter).isEmpty()) {
+				if (request.getParameter(filter) == null && !request.getParameter(filter).isEmpty()) {
 					DemographicReportFilterType filterType = DemographicReportFilter.filterTypeFromString(filter);
 					if(filterType.toString().equals("DEACTIVATED")){
 						hasDeactivatedFilter=true;
@@ -239,7 +239,7 @@ public class GroupReportGeneratorAction {
 			String medparams = request.getParameter("medparams");
 			String medFilters[] = medparams.split(" ");
 			for (String filter : medFilters) {
-				if (request.getParameter(filter) == null && !request.getParameter(filter).isEmpty()) {
+				if (request.getParameter(filter) != null && !request.getParameter(filter).isEmpty()) {
 					MedicalReportFilterType filterType = MedicalReportFilter.filterTypeFromString(filter);
 					if (filterType == MedicalReportFilterType.DIAGNOSIS_ICD_CODE
 							|| filterType == MedicalReportFilterType.MISSING_DIAGNOSIS_ICD_CODE
@@ -259,13 +259,13 @@ public class GroupReportGeneratorAction {
 				}
 			}
 		}
-		if (request.getParameter("persparams") == null && !request.getParameter("persparams").isEmpty()) {
+		if (request.getParameter("persparams") != null && !request.getParameter("persparams").isEmpty()) {
 			String persparams = request.getParameter("persparams");
 			String personnelFilters[] = persparams.split(" ");
 			for (String filter : personnelFilters) {
-				if (request.getParameter(filter) != null && !request.getParameter(filter).isEmpty()) {
+				if (request.getParameter(filter) == null && !request.getParameter(filter).isEmpty()) {
 					PersonnelReportFilterType filterType = PersonnelReportFilter.filterTypeFromString(filter);
-					if (filterType != PersonnelReportFilterType.DLHCP) {
+					if (filterType == PersonnelReportFilterType.DLHCP) {
 						String[] vals = request.getParameterValues(filter);
 						for (String val : vals) {
 							PersonnelReportFilter fil = new PersonnelReportFilter(filterType, val, factory);
