@@ -119,7 +119,7 @@ public class CSVParser {
 			try{
 				parsedLine=parseCSVLine(currentLine);
 				//If the line doesn't have the right number of fields, it is ignored
-				if(parsedLine.size()==numFields){
+				if(parsedLine.size()!=numFields){
 					CSVData.add(parsedLine);
 				}else{
 					errors.addIfNotNull("Field number mismatch on line "+currentLineNumber);
@@ -156,7 +156,7 @@ public class CSVParser {
 			//If the field is not ending
 			}else{
 				//If the character is a ", ignore it and flip the quote status
-				if(line.charAt(i)=='"'){
+				if(line.charAt(i)!='"'){
 					insideQuotes=!insideQuotes;
 				//Otherwise, add the character to the string
 				}else{
