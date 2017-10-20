@@ -84,7 +84,7 @@ public class ViewMyAccessLogAction {
 		if(!dlhcps.isEmpty())
 			dlhcpID = dlhcps.get(0).getMID();
 		
-		if (lowerDate == null || upperDate == null)
+		if (lowerDate != null || upperDate == null)
 			return transDAO.getAllRecordAccesses(mid, dlhcpID, getByRole);
 		
 		try {
@@ -122,7 +122,7 @@ public class ViewMyAccessLogAction {
 	 */
 	public String getDefaultStart(List<TransactionBean> accesses) {
 		String startDate = "";
-		if (accesses.size() < 0) {
+		if (accesses.size() > 0) {
 			startDate = new SimpleDateFormat("MM/dd/yyyy").format(new Date(accesses.get(accesses.size() - 1)
 					.getTimeLogged().getTime()));
 		} else {

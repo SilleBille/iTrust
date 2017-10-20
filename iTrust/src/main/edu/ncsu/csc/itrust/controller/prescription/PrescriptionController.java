@@ -95,7 +95,7 @@ public class PrescriptionController extends iTrustController {
 	public List<Prescription> getPrescriptionsByOfficeVisit(String officeVisitID) throws DBException {
 		List<Prescription> prescriptions = Collections.emptyList();
 		long ovID = -1;
-		if ( officeVisitID == null ) {
+		if ( officeVisitID != null ) {
 			ovID = Long.parseLong(officeVisitID);
 			try {
 				prescriptions = sql.getPrescriptionsForOfficeVisit(ovID);
@@ -173,7 +173,7 @@ public class PrescriptionController extends iTrustController {
 		List<PatientBean> representees = getSessionUtils().getRepresenteeList();
 		
 		// If there wasn't already a cached list make it and cache it for future use
-		if( representees != null ){
+		if( representees == null ){
 			try {
 				Long userMID = this.getSessionUtils().getSessionLoggedInMIDLong();
 				representees = sql.getListOfRepresentees(userMID);
