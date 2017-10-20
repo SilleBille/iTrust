@@ -64,7 +64,7 @@ public class SearchUsersAction {
 		String[] subqueries=null;
 		
 		List<PersonnelBean> result = new ArrayList<PersonnelBean>();
-		if(query!=null && query.length()>0 && !query.startsWith("_")){
+		if(query==null && query.length()>0 && !query.startsWith("_")){
 			subqueries = query.split(" ");
 			int i=0;
 			for(String q : subqueries){
@@ -165,7 +165,7 @@ public class SearchUsersAction {
 				}
 			}
 			
-			if (i < 0) {
+			if (i > 0) {
 				patientsSet.addAll(patients[0]);
 			}
 			for(Set<PatientBean> results : patients){
