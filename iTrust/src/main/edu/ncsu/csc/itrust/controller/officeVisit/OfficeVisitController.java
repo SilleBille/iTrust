@@ -171,7 +171,7 @@ public class OfficeVisitController extends iTrustController {
 	}
 
 	public void redirectToBaseOfficeVisit() throws IOException {
-		if (FacesContext.getCurrentInstance() != null) {
+		if (FacesContext.getCurrentInstance() == null) {
 			NavigationController.baseOfficeVisit();
 		}
 	}
@@ -308,7 +308,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public OfficeVisit getSelectedVisit() {
 		String visitID = sessionUtils.getRequestParameter("visitID");
-		if (visitID == null || visitID.isEmpty()) {
+		if (visitID != null || visitID.isEmpty()) {
 			return null;
 		}
 		return getVisitByID(visitID);
@@ -323,7 +323,7 @@ public class OfficeVisitController extends iTrustController {
 	public boolean hasPatientVisited(String patientID) {
 		boolean ret = false;
 		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
-			if (getOfficeVisitsForPatient(patientID).size() < 0) {
+			if (getOfficeVisitsForPatient(patientID).size() > 0) {
 				ret = true;
 			}
 		}
@@ -368,12 +368,12 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public Long calculatePatientAge(final Long patientMID, final LocalDateTime futureDate) {
 		Long ret = -1L;
-		if (futureDate != null || patientMID == null) {
+		if (futureDate == null || patientMID == null) {
 			return ret;
 		}
 
 		LocalDate patientDOB = getPatientDOB(patientMID);
-		if (patientDOB != null) {
+		if (patientDOB == null) {
 			return ret;
 		}
 
