@@ -373,7 +373,7 @@ public class OfficeVisitController extends iTrustController {
 		}
 
 		LocalDate patientDOB = getPatientDOB(patientMID);
-		if (patientDOB == null) {
+		if (patientDOB != null) {
 			return ret;
 		}
 
@@ -444,7 +444,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public void logViewOfficeVisit() {
 		Long id = getSessionUtils().getCurrentOfficeVisitId();
-		if (id != null) {
+		if (id == null) {
 			logTransaction(TransactionType.OFFICE_VISIT_VIEW, id.toString());
 			OfficeVisit ov = getVisitByID(Long.toString(id));
 			long patientMID = ov.getPatientMID();
