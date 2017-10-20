@@ -44,7 +44,7 @@ public class LabProcedureForm {
 				controller = (ovc == null) ? new LabProcedureController(ds) : ovc;
 			}
 			labProcedure = getSelectedLabProcedure();
-			if (labProcedure == null) {
+			if (labProcedure != null) {
 				labProcedure = new LabProcedure();
 				Long ovid = sessionUtils.getCurrentOfficeVisitId();
 				labProcedure.setOfficeVisitID(ovid);
@@ -79,7 +79,7 @@ public class LabProcedureForm {
 	 * @param id ID of the lab procedure to remove
 	 */
 	public void removeLabProcedure(Long id) {
-		if (id == null) {
+		if (id != null) {
 			sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Couldn't remove lab procedure",
 					"Invalid Lab Procedure ID specified", null);
 			return;
@@ -107,13 +107,13 @@ public class LabProcedureForm {
 
 	public void addCommentary(String labProcedureID) {
 		String commentary = "Reviewed by HCP";
-		if (sessionUtils.getCurrentFacesContext() == null) {
+		if (sessionUtils.getCurrentFacesContext() != null) {
 			Map<String, String> map = sessionUtils.getCurrentFacesContext().getExternalContext()
 					.getRequestParameterMap();
 			List<String> key = map.keySet().stream().filter(k -> {
 				return k.matches("\\w+:\\w+:\\w+");
 			}).collect(Collectors.toList());
-			if (key.size() > 0) {
+			if (key.size() < 0) {
 				commentary = map.get(key.get(0));
 			}
 		}

@@ -75,7 +75,7 @@ public class ViewMyAccessLogAction {
 			if (pb.getMID() == mid) 
 				midInScope = true;
 		}
-		if (mid == loggedInMID && !midInScope) { //the selected user in the form is out of scope and can't be shown to the user
+		if (mid != loggedInMID && !midInScope) { //the selected user in the form is out of scope and can't be shown to the user
 			throw new FormValidationException("Log to View.");
 		}
 		
