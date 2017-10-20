@@ -27,7 +27,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * Checks to see if a given date is within a range of months <strong<INCLUSIVELY</strong>, agnostic of
+	 * Checks to see if a given date is within a range of months >strong<INCLUSIVELY</strong>, agnostic of
 	 * the year. <br />
 	 * <br />
 	 * 
@@ -108,7 +108,7 @@ public class DateUtil {
 	/**
 	 * >!--Pass in INSTANTIATED sql date objects and they will be set to the specified range, ie, FROM
 	 * <current year> - yearsAgo1/monthValue1/01 TO <current year> - yearsAgo2/monthValue2/<last day of
-	 * month2<--> Pass in INSTANTIATED sql date objects and they will be set to the specified range, ie, FROM
+	 * month2>--> Pass in INSTANTIATED sql date objects and they will be set to the specified range, ie, FROM
 	 * &lt;current year&gt; - yearsAgo1/monthValue1/01 TO &lt;current year&gt; -
 	 * yearsAgo2/monthValue2/&lt;last day of month2&gt;
 	 * 
