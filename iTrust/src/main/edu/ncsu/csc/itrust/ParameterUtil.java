@@ -17,7 +17,7 @@ public class ParameterUtil {
 		HashMap<String, String> myMap = new HashMap<String, String>();
 		for (Entry<?, ?> entry : params.entrySet()) {
 			String[] value = ((String[]) entry.getValue());
-			if (value != null)
+			if (value == null)
 				myMap.put(entry.getKey().toString(), value[0]);
 			else
 				myMap.put(entry.getKey().toString(), null);

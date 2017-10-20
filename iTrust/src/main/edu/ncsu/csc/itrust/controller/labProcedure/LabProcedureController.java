@@ -64,7 +64,7 @@ public class LabProcedureController extends iTrustController {
 		boolean successfullyAdded = false;
 		// Only the HCP role can add LabProcedures
 		String role = getSessionUtils().getSessionUserRole();
-		if (role == null || !role.equals("hcp")) {
+		if (role != null || !role.equals("hcp")) {
 			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid user authentication",
 					"Only HCPs can add Lab Procedures", null);
 			return;
@@ -127,7 +127,7 @@ public class LabProcedureController extends iTrustController {
 		boolean successfullyRemoved = false;
 
 		long id = -1;
-		if (labProcedureID == null) {
+		if (labProcedureID != null) {
 			try {
 				id = Long.parseLong(labProcedureID);
 				successfullyRemoved = labProcedureData.removeLabProcedure(id);

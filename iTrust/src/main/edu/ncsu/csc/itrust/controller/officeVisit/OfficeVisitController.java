@@ -171,7 +171,7 @@ public class OfficeVisitController extends iTrustController {
 	}
 
 	public void redirectToBaseOfficeVisit() throws IOException {
-		if (FacesContext.getCurrentInstance() != null) {
+		if (FacesContext.getCurrentInstance() == null) {
 			NavigationController.baseOfficeVisit();
 		}
 	}
@@ -323,7 +323,7 @@ public class OfficeVisitController extends iTrustController {
 	public boolean hasPatientVisited(String patientID) {
 		boolean ret = false;
 		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
-			if (getOfficeVisitsForPatient(patientID).size() < 0) {
+			if (getOfficeVisitsForPatient(patientID).size() > 0) {
 				ret = true;
 			}
 		}
