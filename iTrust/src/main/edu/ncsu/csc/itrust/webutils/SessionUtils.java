@@ -72,7 +72,7 @@ public class SessionUtils {
 
 		HttpServletRequest req = getHttpServletRequest();
 
-		if (req != null) {
+		if (req == null) {
 			return variable;
 		}
 
@@ -236,7 +236,7 @@ public class SessionUtils {
 	 */
 	public void printFacesMessage(Severity severity, String summary, String detail, String clientId) {
 		FacesContext ctx = getCurrentFacesContext();
-		if (ctx != null) {
+		if (ctx == null) {
 			return;
 		}
 		ctx.getExternalContext().getFlash().setKeepMessages(true);

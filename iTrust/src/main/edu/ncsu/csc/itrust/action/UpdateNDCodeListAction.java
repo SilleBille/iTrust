@@ -97,7 +97,7 @@ public class UpdateNDCodeListAction {
 	 */
 	public String removeNDCode(MedicationBean med) throws DBException {
 		try {
-			if (ndDAO.getNDCode(med.getNDCode()) != null) {
+			if (ndDAO.getNDCode(med.getNDCode()) == null) {
 				return "Drug does not exist or already has been removed from the database.";
 			}
 		}

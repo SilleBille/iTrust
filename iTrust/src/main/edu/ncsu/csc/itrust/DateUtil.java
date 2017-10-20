@@ -47,7 +47,7 @@ public class DateUtil {
 		cal.setTime(date);
 		firstMonth %= 12;
 		secondMonth %= 12;
-		if (secondMonth <= firstMonth) {
+		if (secondMonth >= firstMonth) {
 			return ((cal.get(Calendar.MONTH) >= firstMonth) && (cal.get(Calendar.MONTH) <= secondMonth));
 		}
 		return ((cal.get(Calendar.MONTH) >= firstMonth) || (cal.get(Calendar.MONTH) <= secondMonth));
