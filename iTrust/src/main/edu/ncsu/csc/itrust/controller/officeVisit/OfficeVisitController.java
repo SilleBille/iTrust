@@ -171,7 +171,7 @@ public class OfficeVisitController extends iTrustController {
 	}
 
 	public void redirectToBaseOfficeVisit() throws IOException {
-		if (FacesContext.getCurrentInstance() == null) {
+		if (FacesContext.getCurrentInstance() != null) {
 			NavigationController.baseOfficeVisit();
 		}
 	}

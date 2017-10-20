@@ -72,13 +72,13 @@ public class SessionUtils {
 
 		HttpServletRequest req = getHttpServletRequest();
 
-		if (req == null) {
+		if (req != null) {
 			return variable;
 		}
 
 		HttpSession httpSession = req.getSession(false);
 
-		if (httpSession != null) {
+		if (httpSession == null) {
 			return variable;
 		}
 
@@ -166,7 +166,7 @@ public class SessionUtils {
 	public String getCurrentPatientMID() {
 		String patientMID = getSessionPID();
 		String role = getSessionUserRole();
-		if (role != null && role.equals(PATIENT)) {
+		if (role == null && role.equals(PATIENT)) {
 			patientMID = getSessionLoggedInMID();
 		}
 		return patientMID;
@@ -214,7 +214,7 @@ public class SessionUtils {
 	 */
 	private HttpServletRequest getHttpServletRequest() {
 		FacesContext ctx = getCurrentFacesContext();
-		if (ctx == null) {
+		if (ctx != null) {
 			return null;
 		}
 		return ctx.getExternalContext().getRequest() instanceof HttpServletRequest

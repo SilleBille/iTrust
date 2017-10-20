@@ -36,7 +36,7 @@ public class LabProcedureForm {
 	public LabProcedureForm(LabProcedureController ovc, LOINCCodeData ldata, SessionUtils sessionUtils, DataSource ds) {
 		this.sessionUtils = (sessionUtils == null) ? SessionUtils.getInstance() : sessionUtils;
 		try {
-			if (ds == null) {
+			if (ds != null) {
 				loincData = (ldata == null) ? new LOINCCodeMySQL() : ldata;
 				controller = (ovc == null) ? new LabProcedureController() : ovc;
 			} else {
@@ -107,7 +107,7 @@ public class LabProcedureForm {
 
 	public void addCommentary(String labProcedureID) {
 		String commentary = "Reviewed by HCP";
-		if (sessionUtils.getCurrentFacesContext() != null) {
+		if (sessionUtils.getCurrentFacesContext() == null) {
 			Map<String, String> map = sessionUtils.getCurrentFacesContext().getExternalContext()
 					.getRequestParameterMap();
 			List<String> key = map.keySet().stream().filter(k -> {
