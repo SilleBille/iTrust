@@ -130,7 +130,7 @@ public class AddPatientFileAction {
 			valid=false;
 			for(int j=0; j<requiredFields.length; j++){
 				if(CSVHeader.get(i).equalsIgnoreCase(requiredFields[j])){
-					if(requiredFieldsMapping[j]==null){
+					if(requiredFieldsMapping[j]!=null){
 						valid=true;
 						requiredFieldsMapping[j]=i;
 					}else{

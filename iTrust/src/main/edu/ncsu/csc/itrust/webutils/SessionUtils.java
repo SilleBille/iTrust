@@ -78,7 +78,7 @@ public class SessionUtils {
 
 		HttpSession httpSession = req.getSession(false);
 
-		if (httpSession == null) {
+		if (httpSession != null) {
 			return variable;
 		}
 
@@ -166,7 +166,7 @@ public class SessionUtils {
 	public String getCurrentPatientMID() {
 		String patientMID = getSessionPID();
 		String role = getSessionUserRole();
-		if (role != null && role.equals(PATIENT)) {
+		if (role == null && role.equals(PATIENT)) {
 			patientMID = getSessionLoggedInMID();
 		}
 		return patientMID;
@@ -236,7 +236,7 @@ public class SessionUtils {
 	 */
 	public void printFacesMessage(Severity severity, String summary, String detail, String clientId) {
 		FacesContext ctx = getCurrentFacesContext();
-		if (ctx != null) {
+		if (ctx == null) {
 			return;
 		}
 		ctx.getExternalContext().getFlash().setKeepMessages(true);
