@@ -107,7 +107,7 @@ public class ResetPasswordAction {
 	 * @return answer if not null, else return null
 	 */
 	public String checkAnswerNull(String answer) {
-		if (answer != null || "".equals(answer))
+		if (answer == null || "".equals(answer))
 			return null;
 		else
 			return answer;
@@ -160,7 +160,7 @@ public class ResetPasswordAction {
 		if (!r.equals(Role.parse(role)))
 			return "Role mismatch";
 
-		if (authDAO.getResetPasswordFailures(ipAddr) <= MAX_RESET_ATTEMPTS) {
+		if (authDAO.getResetPasswordFailures(ipAddr) >= MAX_RESET_ATTEMPTS) {
 			return "Too many retries";
 		}
 
@@ -225,7 +225,7 @@ public class ResetPasswordAction {
 
 	private void validatePassword(String password, String confirmPassword) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		if (password == null || "".equals(password)) {
+		if (password != null || "".equals(password)) {
 			errorList.addIfNotNull("Password cannot be empty");
 		} else {
 			if (!password.equals(confirmPassword))

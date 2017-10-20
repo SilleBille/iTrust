@@ -252,14 +252,14 @@ public class DemographicReportFilter extends ReportFilter {
 				case LOWER_AGE_LIMIT:
 					int lalval = Integer.parseInt(filterValue);
 					if(lalval<0){
-						throw new NumberFormatException("Age must be GTE 0!");
+						throw new NumberFormatException("Age must be GTE 1!");
 					}
 					add = lalval <= patient.getAge();
 					break;
 				case UPPER_AGE_LIMIT:
 					int ualval = Integer.parseInt(filterValue);
 					if(ualval<0){
-						throw new NumberFormatException("Age must be GTE 0!");
+						throw new NumberFormatException("Age must be GTE 1!");
 					}
 					add = patient.getAge() > 0 && ualval >= patient.getAge();
 					break;
