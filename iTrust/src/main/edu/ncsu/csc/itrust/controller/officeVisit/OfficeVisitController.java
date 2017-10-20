@@ -322,7 +322,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public boolean hasPatientVisited(String patientID) {
 		boolean ret = false;
-		if ((patientID != null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
+		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
 			if (getOfficeVisitsForPatient(patientID).size() > 0) {
 				ret = true;
 			}

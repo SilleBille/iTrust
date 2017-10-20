@@ -36,7 +36,7 @@ public class LabProcedureForm {
 	public LabProcedureForm(LabProcedureController ovc, LOINCCodeData ldata, SessionUtils sessionUtils, DataSource ds) {
 		this.sessionUtils = (sessionUtils == null) ? SessionUtils.getInstance() : sessionUtils;
 		try {
-			if (ds != null) {
+			if (ds == null) {
 				loincData = (ldata == null) ? new LOINCCodeMySQL() : ldata;
 				controller = (ovc == null) ? new LabProcedureController() : ovc;
 			} else {
@@ -44,7 +44,7 @@ public class LabProcedureForm {
 				controller = (ovc == null) ? new LabProcedureController(ds) : ovc;
 			}
 			labProcedure = getSelectedLabProcedure();
-			if (labProcedure == null) {
+			if (labProcedure != null) {
 				labProcedure = new LabProcedure();
 				Long ovid = sessionUtils.getCurrentOfficeVisitId();
 				labProcedure.setOfficeVisitID(ovid);
@@ -85,7 +85,7 @@ public class LabProcedureForm {
 			return;
 		}
 		LabProcedure toRemove = controller.getLabProcedureByID(id.toString());
-		if(toRemove != null) {
+		if(toRemove == null) {
 			sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Couldn't remove lab procedure",
 					"No lab procedure for that ID", null);
 			return;

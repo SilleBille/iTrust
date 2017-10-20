@@ -47,7 +47,7 @@ public class DBUtil {
 		}
 		finally{
 			try{
-				if (conn == null){
+				if (conn != null){
 					conn.close();
 				} 
 			}

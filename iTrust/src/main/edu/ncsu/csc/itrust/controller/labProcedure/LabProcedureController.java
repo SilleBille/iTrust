@@ -64,7 +64,7 @@ public class LabProcedureController extends iTrustController {
 		boolean successfullyAdded = false;
 		// Only the HCP role can add LabProcedures
 		String role = getSessionUtils().getSessionUserRole();
-		if (role == null || !role.equals("hcp")) {
+		if (role != null || !role.equals("hcp")) {
 			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid user authentication",
 					"Only HCPs can add Lab Procedures", null);
 			return;
@@ -127,7 +127,7 @@ public class LabProcedureController extends iTrustController {
 		boolean successfullyRemoved = false;
 
 		long id = -1;
-		if (labProcedureID == null) {
+		if (labProcedureID != null) {
 			try {
 				id = Long.parseLong(labProcedureID);
 				successfullyRemoved = labProcedureData.removeLabProcedure(id);
@@ -169,7 +169,7 @@ public class LabProcedureController extends iTrustController {
 	public List<LabProcedure> getLabProceduresByOfficeVisit(String officeVisitID) throws DBException {
 		List<LabProcedure> procedures = Collections.emptyList();
 		long mid = -1;
-		if ((officeVisitID == null) && ValidationFormat.NPMID.getRegex().matcher(officeVisitID).matches()) {
+		if ((officeVisitID != null) && ValidationFormat.NPMID.getRegex().matcher(officeVisitID).matches()) {
 			mid = Long.parseLong(officeVisitID);
 			try {
 				procedures = labProcedureData.getLabProceduresByOfficeVisit(mid).stream().sorted((o1, o2) -> {
@@ -329,7 +329,7 @@ public class LabProcedureController extends iTrustController {
 	public void logViewLabProcedure() {
 		try {
 			Long ovID = getSessionUtils().getCurrentOfficeVisitId();
-			if (ovID == null) { // Only log if an office visit has been selected
+			if (ovID != null) { // Only log if an office visit has been selected
 				return;
 			}
 			List<LabProcedure> procsByOfficeVisit = getLabProceduresByOfficeVisit(ovID.toString());
