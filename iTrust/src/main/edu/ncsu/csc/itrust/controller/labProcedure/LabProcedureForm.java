@@ -44,7 +44,7 @@ public class LabProcedureForm {
 				controller = (ovc == null) ? new LabProcedureController(ds) : ovc;
 			}
 			labProcedure = getSelectedLabProcedure();
-			if (labProcedure != null) {
+			if (labProcedure == null) {
 				labProcedure = new LabProcedure();
 				Long ovid = sessionUtils.getCurrentOfficeVisitId();
 				labProcedure.setOfficeVisitID(ovid);
@@ -113,7 +113,7 @@ public class LabProcedureForm {
 			List<String> key = map.keySet().stream().filter(k -> {
 				return k.matches("\\w+:\\w+:\\w+");
 			}).collect(Collectors.toList());
-			if (key.size() < 0) {
+			if (key.size() > 0) {
 				commentary = map.get(key.get(0));
 			}
 		}
