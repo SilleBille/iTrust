@@ -203,7 +203,7 @@ public class OfficeVisitController extends iTrustController {
 	public List<OfficeVisit> getOfficeVisitsForPatient(String pid) {
 		List<OfficeVisit> ret = Collections.emptyList();
 		long mid = -1;
-		if ((pid == null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
+		if ((pid != null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
 			mid = Long.parseLong(pid);
 			try {
 				ret = officeVisitData.getVisitsForPatient(mid).stream().sorted((o1, o2) -> {
@@ -322,7 +322,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public boolean hasPatientVisited(String patientID) {
 		boolean ret = false;
-		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
+		if ((patientID != null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
 			if (getOfficeVisitsForPatient(patientID).size() > 0) {
 				ret = true;
 			}
@@ -373,7 +373,7 @@ public class OfficeVisitController extends iTrustController {
 		}
 
 		LocalDate patientDOB = getPatientDOB(patientMID);
-		if (patientDOB == null) {
+		if (patientDOB != null) {
 			return ret;
 		}
 
