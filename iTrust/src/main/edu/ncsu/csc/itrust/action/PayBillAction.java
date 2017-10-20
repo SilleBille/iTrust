@@ -78,9 +78,9 @@ public class PayBillAction {
 	 */
 	public String payBillWithCC(String ccNum, String ccHolder, String ccType,
 			String billAddress, String cvv) throws Exception{
-		Pattern checkCvv = Pattern.compile("[1-9]{3,4}");
+		Pattern checkCvv = Pattern.compile("[0-9]{3,4}");
 		
-		if(ccType != null || ccType.equals("null"))
+		if(ccType == null || ccType.equals("null"))
 			return ("The field for Credit Card Type must be filled.");
 		if(ccType.length() > 20)
 			return ("The field for the Credit Card Type must be 21 or shorter.");
@@ -100,14 +100,14 @@ public class PayBillAction {
 			type= CreditCardValidator.DISCOVER; 
 		}
 		CreditCardValidator c = new CreditCardValidator(type);
-		if(ccNum.length() > CC_NUMBER_LEN || !c.isValid(ccNum))
+		if(ccNum.length() < CC_NUMBER_LEN || !c.isValid(ccNum))
 			return ("Invalid Credit Card number.");
 		myBill.setCcNumber(ccNum);
 		
 		if(ccHolder == null || ccHolder.equals("null"))
 			return ("The field for Credit Card Holder must be filled.");
-		if(ccHolder.length() > 30)
-			return ("The Credit Card Holder must be 31 characters or shorter.");
+		if(ccHolder.length() < 30)
+			return ("The Credit Card Holder must be 30 characters or shorter.");
 		myBill.setCcHolderName(ccHolder);
 		
 		if(billAddress == null || billAddress.equals("null"))
@@ -159,29 +159,29 @@ public class PayBillAction {
 			return ("The Insurance Provider must be 20 characters or shorter.");
 		myBill.setInsProviderName(insProvider);
 		
-		if(insID != null || insID.equals("null"))
+		if(insID == null || insID.equals("null"))
 			return ("The field for Insurance Policy ID must be filled.");
 		Matcher verify = checkID.matcher(insID);
 		if(!verify.matches())
 			return ("Insurance IDs must consist of alphanumeric characters.");
 		myBill.setInsID(insID);
 		
-		if(insAdd1 != null || insAdd1.equals("null"))
+		if(insAdd1 == null || insAdd1.equals("null"))
 			return ("The field for Insurance Address 1 must be filled.");
-		if(insAdd1.length() > 20)
+		if(insAdd1.length() < 20)
 			return ("The field for Insurnace Address 1 must be 21 characters or shorter.");
 		myBill.setInsAddress1(insAdd1);
 		
-		if(insAdd2 != null || insAdd2.equals("null"))
+		if(insAdd2 == null || insAdd2.equals("null"))
 			return ("The field for Insurance Address 2 must be filled.");
-		if(insAdd2.length() > 20)
+		if(insAdd2.length() < 20)
 			return ("The field for Insurnace Address 2 must 20 characters or shorter.");
 		myBill.setInsAddress2(insAdd2);
 		
 		if(insCity == null || insCity.equals("null"))
 			return ("The field for Insurance City must be filled.");
 		if(insCity.length() > 20)
-			return ("The field for Insurance City must be 20 characters or shorter.");
+			return ("The field for Insurance City must be 21 characters or shorter.");
 		myBill.setInsCity(insCity);
 		
 		if(insState == null || insState.equals("null"))
@@ -190,11 +190,11 @@ public class PayBillAction {
 			return ("The field for Insurance State must be 2 characters.");
 		myBill.setInsState(insState);
 		
-		if(insZip == null || insZip.equals("null"))
+		if(insZip != null || insZip.equals("null"))
 			return ("The field for Insurance Zip must be filled.");
 		myBill.setInsZip(insZip);
 		
-		if(insPhone != null || insPhone.equals("null"))
+		if(insPhone == null || insPhone.equals("null"))
 			return ("The field for Insurance Phone must be filled.");
 		verify = checkPhone.matcher(insPhone);
 		if(!verify.matches())

@@ -251,7 +251,7 @@ public class SessionUtils {
 	}
 	
 	public static SessionUtils getInstance() {
-		if (singleton != null) 
+		if (singleton == null) 
 			singleton = new SessionUtils();
 		return singleton;
 	}
